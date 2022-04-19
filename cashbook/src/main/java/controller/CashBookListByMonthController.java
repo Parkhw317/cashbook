@@ -25,7 +25,8 @@ public class CashBookListByMonthController extends HttpServlet {
 			y = Integer.parseInt(request.getParameter("y"));
 		}
 		if(request.getParameter("m") != null) {
-			m = Integer.parseInt(request.getParameter("m"));
+			m = Integer.parseInt(request.getParameter("m")
+					);
 		}
 		if(m==0) {
 			m = 12;
