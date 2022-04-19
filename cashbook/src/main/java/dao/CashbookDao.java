@@ -19,6 +19,7 @@ public class CashbookDao {
 		 	,DAY(cash_date) day
 		 	,kind
 		 	,cash
+		 	,LEFT(memo, 5) memo
 		 FROM cashbook
 		 WHERE YEAR(cash_date) = ? AND MONTH(cash_date) = ?
 		 ORDER BY DAY(cash_date) ASC
@@ -26,14 +27,16 @@ public class CashbookDao {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
+		
 		String sql = "SELECT"
 				+ "		 	cashbook_no cashbookNo"
 				+ "		 	,DAY(cash_date) day"
 				+ "		 	,kind"
 				+ "		 	,cash"
+				+ "		 	,LEFT(memo, 5) memo"
 				+ "		 FROM cashbook"
 				+ "		 WHERE YEAR(cash_date) = ? AND MONTH(cash_date) = ?"
-				+ "		 ORDER BY DAY(cash_date) ASC";
+				+ "		 ORDER BY DAY(cash_date) ASC, kind ASC";
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
@@ -47,6 +50,7 @@ public class CashbookDao {
 				map.put("day", rs.getInt("day"));
 				map.put("kind", rs.getString("kind"));
 				map.put("cash", rs.getInt("cash"));
+				map.put("memo", rs.getString("memo"));
 				list.add(map);
 			}
 		} catch (Exception e) {
