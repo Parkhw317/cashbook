@@ -16,11 +16,14 @@ public class DeleteCashbookController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int cashbookNo = Integer.parseInt(request.getParameter("CashbookNo"));
+		
+		int cashbookNo = Integer.parseInt(request.getParameter("cashbookNo"));
+		System.out.println(cashbookNo + "◀◀ cashbookNo - DeleteCashbookController");
 		
 		CashbookDao cashbookDao = new CashbookDao();
 		
 		int row = cashbookDao.deleteCashbook(cashbookNo);
+		System.out.println(row + "◀◀ row - DeleteCashbookController");
 		
 		response.sendRedirect(request.getContextPath()+"/CashbookListByMonthController");
 	}

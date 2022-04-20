@@ -28,23 +28,24 @@ public class CashbookDao {
 			conn.setAutoCommit(false); 
 			
 			
-			String cashbookSql = "DELETE FROM hashtag WHERE cashbook_no=?";
+			String cashbookSql = "DELETE FROM cashbook WHERE cashbook_no=?";
 			
 			stmt = conn.prepareStatement(cashbookSql);
 			stmt.setInt(1, cashbookNo);
 
 			
-			String hashtagSql = "DELETE FROM cashbook WHERE cashbook_no=?;";
+			String hashtagSql = "DELETE FROM hashtag WHERE cashbook_no=?";
 			
 			stmt2 = conn.prepareStatement(hashtagSql);
 			stmt2.setInt(1, cashbookNo);
-			stmt2.executeQuery();
+			stmt2.executeUpdate();
 	
+			row = stmt.executeUpdate();
 			
 			if(row == 1) {
-				System.out.println("delete hashtag 성공");
+				System.out.println("delete cashbook 성공");
 			} else {
-				System.out.println("delete hashtag 실패");		
+				System.out.println("delete cashbook 실패");		
 			}
 			
 			conn.commit();
