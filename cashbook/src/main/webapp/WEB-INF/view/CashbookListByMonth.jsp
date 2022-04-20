@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CashBookListByMonth</title>
+<title>CashbookListByMonth</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body class = "container">
@@ -33,8 +33,8 @@
 	<h2><%=y%>년 <%=m%>월</h2>
 
 	<div>
-		<a href="<%=request.getContextPath()%>/CashBookListByMonthController?y=<%=y%>&m=<%=m-1%>">이전 달</a>
-		<a href="<%=request.getContextPath()%>/CashBookListByMonthController?y=<%=y%>&m=<%=m+1%>">다음 달</a>
+		<a href="<%=request.getContextPath()%>/CashbookListByMonthController?y=<%=y%>&m=<%=m-1%>">이전 달</a>
+		<a href="<%=request.getContextPath()%>/CashbookListByMonthController?y=<%=y%>&m=<%=m+1%>">다음 달</a>
 	</div>
 	<!-- 
 		1) 이번날 1일의 요일 firstDayYoil -> 요일 -> startBlank -> 일 0, 월 1, 화 2, ... 토 6
@@ -70,7 +70,7 @@
             %>
                      <td class="<%=c%>">
                         <%=i-startBlank%>
-                        <a href="<%=request.getContextPath()%>/InsertCashBookController?y=<%=y%>&m=<%=m%>&d=<%=i-startBlank%>" class="btn btn-light">입력</a>
+                        <a href="<%=request.getContextPath()%>/InsertCashbookController?y=<%=y%>&m=<%=m%>&d=<%=i-startBlank%>" class="btn btn-light">입력</a>
                      	<div>
                      		<%
                      		// 해당 날짜의 cashbook 목록 출력
@@ -80,9 +80,11 @@
                      			
                      		%>
                      			<div>
+                     			<a href="<%=request.getContextPath()%>/CashbookOne?cashbookNo=<%=map.get("cashbookNo")%>">
                      			[<%=map.get("kind")%>]
                      			<%=map.get("cash")%>원
                      			<%=map.get("memo")%> ...
+                     			</a>
                      			</div>
                      		<%
                      				}
