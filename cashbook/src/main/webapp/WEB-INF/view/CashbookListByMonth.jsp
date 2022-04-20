@@ -80,7 +80,7 @@
                      			
                      		%>
                      			<div>
-                     			<a href="<%=request.getContextPath()%>/CashbookOne?cashbookNo=<%=map.get("cashbookNo")%>">
+                     			<a href="<%=request.getContextPath()%>/CashbookOneController?cashbookNo=<%=map.get("cashbookNo")%>">
                      			[<%=map.get("kind")%>]
                      			<%=map.get("cash")%>원
                      			<%=map.get("memo")%> ...

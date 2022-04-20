@@ -25,8 +25,7 @@ public class CashbookListByMonthController extends HttpServlet {
 			y = Integer.parseInt(request.getParameter("y"));
 		}
 		if(request.getParameter("m") != null) {
-			m = Integer.parseInt(request.getParameter("m")
-					);
+			m = Integer.parseInt(request.getParameter("m"));
 		}
 		if(m==0) {
 			m = 12;
@@ -85,6 +84,7 @@ public class CashbookListByMonthController extends HttpServlet {
 		
 		// 3) 뷰 포워딩
 		request.getRequestDispatcher("/WEB-INF/view/CashbookListByMonth.jsp").forward(request, response);
+		
 	}
 
 }

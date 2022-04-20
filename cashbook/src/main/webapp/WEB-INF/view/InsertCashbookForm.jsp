@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>insert Cashbook Form</title>
 </head>
 <body>
 	<h1>insertCashbook</h1>

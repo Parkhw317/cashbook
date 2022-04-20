@@ -13,6 +13,109 @@ import java.util.Map;
 import vo.Cashbook;
 
 public class CashbookDao {
+	public int deleteCashbook(int cashbookNo) {
+		int row = 0;
+
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		PreparedStatement stmt2 = null;
+
+		
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
+			conn.setAutoCommit(false); 
+			
+			
+			String cashbookSql = "DELETE FROM hashtag WHERE cashbook_no=?";
+			
+			stmt = conn.prepareStatement(cashbookSql);
+			stmt.setInt(1, cashbookNo);
+
+			
+			String hashtagSql = "DELETE FROM cashbook WHERE cashbook_no=?;";
+			
+			stmt2 = conn.prepareStatement(hashtagSql);
+			stmt2.setInt(1, cashbookNo);
+			stmt2.executeQuery();
+	
+			
+			if(row == 1) {
+				System.out.println("delete hashtag 성공");
+			} else {
+				System.out.println("delete hashtag 실패");		
+			}
+			
+			conn.commit();
+				
+			
+		} catch (Exception e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return row;
+	}
+
+		
+	
+	
+	
+	
+	public Cashbook selectCashbookOne(int cashbookNo) {
+		Cashbook cashbook = new Cashbook();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
+			
+			String sql = "SELECT cashbook_no cashbookNo, cash_date cashDate, kind, cash, memo FROM cashbook WHERE cashbook_no = ?";
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, cashbookNo);
+			System.out.println(stmt + "◀ SQL selectCashbookOne");
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				cashbook = new Cashbook();
+				cashbook.setCashbookNo(rs.getInt("cashbookNo"));
+				cashbook.setCashDate(rs.getString("cashDate"));
+				cashbook.setKind(rs.getString("kind"));
+				cashbook.setCash(rs.getInt("cash"));
+				cashbook.setMemo(rs.getString("memo"));
+			}
+				
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					// -데이터베이스 자원 반환
+					rs.close();
+					stmt.close();
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			return cashbook;
+		}
+
+
 		public void insertCashbook(Cashbook cashbook, List<String> hashtag) {
 			Connection conn = null;
 			PreparedStatement stmt = null;
