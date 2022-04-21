@@ -30,14 +30,17 @@
 		
 		
 	%>
-	<div>
-		<a href="<%=request.getContextPath()%>/TagController">tags</a>
+	<div class="container p-3 my-3 bg-warning text-white">
+	<h2 align="center"><%=y%>년 <%=m%>월</h2>
 	</div>
-	<h2><%=y%>년 <%=m%>월</h2>
-
 	<div>
-		<a href="<%=request.getContextPath()%>/CashbookListByMonthController?y=<%=y%>&m=<%=m-1%>">이전 달</a>
-		<a href="<%=request.getContextPath()%>/CashbookListByMonthController?y=<%=y%>&m=<%=m+1%>">다음 달</a>
+		<a href="<%=request.getContextPath()%>/TagController" class="btn btn-primary btn-sm" role="button">tags</a>
+	</div>
+	<div align="right">
+		<a href="<%=request.getContextPath()%>/CashbookListByMonthController?y=<%=y%>&m=<%=m-1%>" class="btn btn-outline-warning btn-sm" role="button">이전 달</a>
+		<a href="<%=request.getContextPath()%>/CashbookListByMonthController?y=<%=y%>&m=<%=m+1%>" class="btn btn-outline-warning btn-sm" role="button">다음 달</a>
+		<br>
+		<br>
 	</div>
 	<!-- 
 		1) 이번날 1일의 요일 firstDayYoil -> 요일 -> startBlank -> 일 0, 월 1, 화 2, ... 토 6

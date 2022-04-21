@@ -4,11 +4,15 @@
 <head>
 <meta charset="UTF-8">
 <title>insert Cashbook Form</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
-<body>
-	<h1>insertCashbook</h1>
+<body class = "container">
+	<div class="container p-3 my-3 bg-success text-white">
+	<h1 align="center">insert Cashbook</h1>
+	</div>
+	
 	<form action="<%=request.getContextPath()%>/InsertCashbookController" method="post">
-		<table border="1">
+		<table class="table table-bordered">
 			<tr>
 				<td>날짜</td>
 				<td>
@@ -34,7 +38,9 @@
 				</td>
 			</tr>
 		</table>
-		<button type="submit">입력</button>
+
+		<a href="<%=request.getContextPath()%>/CashbookListByMonthController?" class="btn btn-secondary btn-sm" role="button">이전</a>
+		<button type="submit" class="btn btn-outline-success btn-sm">입력</button>
 	</form>
 </body>
 </html>

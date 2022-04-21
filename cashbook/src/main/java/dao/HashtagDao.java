@@ -77,14 +77,13 @@ public class HashtagDao {
 		
 		try {
 			/*
-				
-SELECT t.kind, t.tag, t.cnt, RANK() over(ORDER BY t.cnt DESC) 'rank'
+				SELECT t.kind, t.tag, t.cnt, RANK() over(ORDER BY t.cnt DESC) 'rank'
 				FROM 
 				(SELECT c.kind, h.tag, COUNT(*) cnt
 				FROM hashtag h
 				INNER JOIN cashbook c
 				ON h.cashbook_no = c.cashbook_no
-				WHERE c.kind = '수입'
+				WHERE c.kind = '?'
 				GROUP BY tag) t;
 			 */
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -95,7 +94,7 @@ SELECT t.kind, t.tag, t.cnt, RANK() over(ORDER BY t.cnt DESC) 'rank'
 					+ " FROM hashtag h"
 					+ " INNER JOIN cashbook c"
 					+ " ON h.cashbook_no = c.cashbook_no"
-					+ " WHERE c.kind = '수입'"
+					+ " WHERE c.kind = ?"
 					+ " GROUP BY tag) t";
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, kind);
@@ -105,7 +104,7 @@ SELECT t.kind, t.tag, t.cnt, RANK() over(ORDER BY t.cnt DESC) 'rank'
 				map.put("tag", rs.getString("tag"));
 				map.put("count", rs.getInt("cnt"));
 				map.put("rank", rs.getInt("rank"));
-				map.put("kind", rs.getInt("kind"));
+				map.put("kind", rs.getString("kind"));
 				kindList.add(map);
 			}
       } catch (Exception e) {

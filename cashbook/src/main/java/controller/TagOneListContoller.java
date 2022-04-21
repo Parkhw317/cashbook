@@ -22,7 +22,7 @@ public class TagOneListContoller extends HttpServlet {
 		request.setCharacterEncoding("utf-8");	
 		String tag = request.getParameter("tag");
 	
-		System.out.println("[SelectTagKindListContoller.java] 선택한 tag는 : " + tag);
+		System.out.println("[TagOneListContoller.java] 선택한 tag는 : " + tag);
 		
 		HashtagDao hashtagDao = new HashtagDao();
 		List<Map<String, Object>> tagOneList = hashtagDao.selectTagOneList(tag);

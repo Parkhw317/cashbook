@@ -5,51 +5,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
 
 	<h1>tag rank</h1>
-	<div>지출별 검색</div>
-	<table border="1">
-		<tr>
-			<th>rank</th>
-			<th>tag</th>
-			<th>count</th>
-		</tr>
-		<%
-			List<Map<String, Object>> exList = (List<Map<String, Object>>)request.getAttribute("exList");
-			for(Map<String, Object> map : exList) {
-		%>
+		<div>수입, 지출별 검색</div>
+			<form action="<%=request.getContextPath()%>/SelectKindController" method="get">
+				<table border="1">
 				<tr>
-					<td><%=map.get("rank")%></td>
-					<td><%=map.get("tag")%></td>
-					<td><%=map.get("count")%></td>
+					<td>kind</td>
+					<td>
+						<input type="radio" name="kind" value="수입">수입
+						<input type="radio" name="kind" value="지출">지출
+					</td>
 				</tr>
-		<%			
-			}
-		%>
-	</table>
-	
-		<div>수입별 검색</div>
-	<table border="1">
-		<tr>
-			<th>rank</th>
-			<th>tag</th>
-			<th>count</th>
-		</tr>
-		<%
-		List<Map<String, Object>> inList = (List<Map<String, Object>>)request.getAttribute("inList");
-			for(Map<String, Object> map : inList) {
-		%>
-				<tr>
-					<td><%=map.get("rank")%></td>
-					<td><%=map.get("tag")%></td>
-					<td><%=map.get("count")%></td>
-				</tr>
-		<%			
-			}
-		%>
-	</table>
+				</table>
+				<button type="submit">검색</button>
+			</form>
 
 	<div> 태그별 상세 검색</div>
 	<table border="1">
