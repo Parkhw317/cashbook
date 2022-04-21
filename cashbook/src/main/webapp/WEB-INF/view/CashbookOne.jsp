@@ -36,6 +36,7 @@
 	<div>
 		<a href="<%=request.getContextPath()%>/UpdateCashbookController?">수정</a>
 		<a href="<%=request.getContextPath()%>/DeleteCashbookController?cashbookNo=<%=request.getAttribute("cashbookNo")%>">삭제</a>
+		<a href="<%=request.getContextPath()%>/CashbookListByMonthController?">이전</a>
 	</div>
 </body>
 </html>
