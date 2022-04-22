@@ -20,6 +20,7 @@ public class CashbookOneController extends HttpServlet {
 		String kind = "";
 		int cash = 0;
 		String memo = "";
+		String memberId="";
 		
 		
 		System.out.println(cashbookNo + " ◀◀ cashbookNo CashbookOneController.doGet()");
@@ -33,6 +34,7 @@ public class CashbookOneController extends HttpServlet {
 		request.setAttribute("kind", cashbook.getKind());
 		request.setAttribute("cash", cashbook.getCash());
 		request.setAttribute("memo", cashbook.getMemo());
+		request.setAttribute("memberId", cashbook.getMemberId());
 		
 		
 		request.getRequestDispatcher("/WEB-INF/view/CashbookOne.jsp").forward(request, response);

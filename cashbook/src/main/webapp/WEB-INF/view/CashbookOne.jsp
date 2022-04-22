@@ -24,6 +24,11 @@
 				
 			</tr>
 			<tr>
+				<td>memberId</td>
+				<td><%=request.getAttribute("memberId") %></td>
+				
+			</tr>
+			<tr>
 				<td>cashDate</td>
 				<td><%=request.getAttribute("cashDate") %></td>
 			</tr>

@@ -30,17 +30,21 @@ public class InsertCashbookController extends HttpServlet {
 		String kind = request.getParameter("kind");
 		int cash = Integer.parseInt(request.getParameter("cash"));
 		String memo = request.getParameter("memo");
+		// String memberId = request.getParameter("memberId");
+		
 		
 		System.out.println(cashDate + " <--cashDate InsertCashbookController.doPost()");
 		System.out.println(kind + " <--kind InsertCashbookController.doPost()");
 		System.out.println(cash + " <--cash InsertCashbookController.doPost()");
 		System.out.println(memo + " <--memo InsertCashbookController.doPost()");
 		
+		
 		Cashbook cashbook = new Cashbook();
 		cashbook.setCashDate(cashDate);
 		cashbook.setKind(kind);
 		cashbook.setCash(cash);
 		cashbook.setMemo(memo);
+		// cashbook.setMemberId(memberId);
 		
 		
 		List<String> hashtag = new ArrayList<>();

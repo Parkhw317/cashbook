@@ -20,6 +20,14 @@
 							value="<%=(String)request.getAttribute("cashDate")%>" readonly="readonly">
 				</td>
 			</tr>
+			<!-- 
+			<tr>
+				<td>memberId</td>
+				<td>
+					<input type="text" name="memberId" >
+				</td>
+			 -->
+			</tr>
 			<tr>
 				<td>kind</td>
 				<td>

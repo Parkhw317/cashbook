@@ -14,6 +14,73 @@ import vo.Cashbook;
 
 public class HashtagDao {
 	
+	public List<Map<String, Object>> selectDateTagList(String startDate, String endDate) { // 항목별 검색(상세항목)
+		List<Map<String, Object>> dateTagList = new ArrayList<>();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+
+		try {
+			/*
+				SELECT
+				c.cash_date cashDate
+				,c.cashbook_no cashbookNo
+				,c.kind
+				,h.tag
+				,c.cash
+				  FROM hashtag h
+				  INNER JOIN cashbook c
+				  ON c.cashbook_no = h.cashbook_no
+				  WHERE c.cash_date BETWEEN '2022-04-01' AND '2022-04-02'
+				  ORDER BY c.cash_date ASC;
+			 */
+			Class.forName("org.mariadb.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
+			
+			String sql = "SELECT"
+							+ " c.cash_date cashDate"
+							+ " ,c.cashbook_no cashbookNo"
+							+ " ,c.kind"
+							+ " ,h.tag"
+							+ " ,c.cash"
+							+ " FROM hashtag h"
+							+ " INNER JOIN cashbook c"
+							+ " ON c.cashbook_no = h.cashbook_no"
+							+ " WHERE c.cash_date BETWEEN ? AND ?"
+							+ " ORDER BY c.cash_date ASC";
+			
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, startDate);
+			stmt.setString(2, endDate);
+			System.out.println(stmt + "◀ SQL selectDateTagList");
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<>();
+				map.put("cashDate", rs.getString("cashDate"));
+				map.put("cashbookNo", rs.getInt("cashbookNo"));
+				map.put("kind", rs.getString("kind"));
+				map.put("tag", rs.getString("tag"));
+				map.put("cash", rs.getInt("cash"));
+				dateTagList.add(map);
+				
+			}
+		}catch (Exception e) {
+		         e.printStackTrace();
+		      } finally {
+		         try {
+		            conn.close();
+		         } catch (SQLException e) {
+		            e.printStackTrace();
+		         }
+		      }
+		     
+				return dateTagList;
+		   }
+	
+	
 	
 	public List<Map<String, Object>> selectTagOneList(String tag) { // 항목별 검색(상세항목)
 		List<Map<String, Object>> tagOneList = new ArrayList<>();

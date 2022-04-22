@@ -64,7 +64,32 @@
 				</div>
 				<button type="submit" class="btn btn-outline-info btn-lg btn-block">검색</button>
 			</form>
+			<br><br><br>
+			<h4 align="center">날짜별 검색</h4><br>
+			<form action="<%=request.getContextPath()%>/SelectDateTagController"
+				method="get">
+				<div style="text-align:center">
+				<table class = "table">
+					<tr>
+						<td>date</td>
+						<td>
+							<div class="date">
+								<label> startDate <input type="date" name="startDate" value="startDate" > </label>
+							</div>
+						</td>
+						<td>
+							<div class="date">
+								<label> endDate <input type="date" name="endDate" value="endDate"> </label>
+							</div>
+						</td>
+					</tr>
+				</table>
+				</div>
+				<button type="submit" class="btn btn-outline-info btn-lg btn-block">검색</button>
+			</form>
 		</div>
+
+
 
 
 
