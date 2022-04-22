@@ -30,6 +30,12 @@
 		
 		
 	%>
+	
+	<div>
+		<%=session.getAttribute("sessionMemberId") %>님 반갑습니다.
+		<a href="<%=request.getContextPath()%>/LogoutController" class="btn btn-info btn-sm" role="button">로그아웃</a>
+	</div>
+
 	<div class="container p-3 my-3 bg-warning text-white">
 	<h2 align="center"><%=y%>년 <%=m%>월</h2>
 	</div>
