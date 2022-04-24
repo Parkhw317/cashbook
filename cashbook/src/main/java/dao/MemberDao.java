@@ -10,10 +10,61 @@ import vo.Cashbook;
 import vo.Member;
 
 public class MemberDao {
-	// 회원가입
 	// 회원수정
 	// 회원탈퇴
 	// 회원정보
+	
+	// 회원가입
+	
+	public void insertMember(Member member) {
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
+			
+			String sql = "INSERT INTO member"
+				+ 		" (member_id, member_pw, member_name,"
+				+ 		" member_address, member_gender, member_phone,"
+				+ 		" member_email, create_date, Update_date)"
+				+ 		" VALUES"
+				+ 		" (?, PASSWORD(?), ?, ?, ?, ?, ?, NOW(), NOW())";
+			
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, member.getMemberId());
+			stmt.setString(2, member.getMemberPw());
+			stmt.setString(3, member.getMemberName());
+			stmt.setString(4, member.getMemberAddress());
+			stmt.setString(5, member.getMemberGender());
+			stmt.setString(6, member.getMemberPhone());
+			stmt.setString(7, member.getMemberEmail());
+
+			System.out.println("[MemberDao.insertMember] insert value : " + member.toString());
+			System.out.println("[MemberDao.insertMember] stmt : " + stmt);
+			int row = stmt.executeUpdate();
+			
+			if(row == 1) { // 디버깅, row 값이 1일 경우 입력 성공, 아닐경우 실패
+				System.out.println("☆★☆★☆★☆★ 회원가입 성공 ☆★☆★☆★☆★");
+			} else {
+				System.out.println("※※※※※※※ 회원가입 실패 ※※※※※※※");
+			}
+		
+			  
+		      } catch (Exception e) {
+		         e.printStackTrace();
+		      } finally {
+		         try {
+		            conn.close();
+		         } catch (SQLException e) {
+		            e.printStackTrace();
+		         }
+		      }
+		  }
+	
+	
 	
 	// 로그인
 	public String selectMemberByIdPw(Member member) {
@@ -31,7 +82,7 @@ public class MemberDao {
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, member.getMemberId());
 			stmt.setString(2, member.getMemberPw());
-			System.out.println(stmt + "◀ SQL selectCashbookOne");
+			System.out.println("[MemberDao.selectMemberByIdPw] insert value : " + stmt);
 			rs = stmt.executeQuery();
 			
 			  if(rs.next()) {
@@ -48,5 +99,5 @@ public class MemberDao {
 		      }
 		      return memberId;
 		  }
-
+	
 }

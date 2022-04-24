@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.HashtagDao;
 
@@ -18,6 +19,15 @@ import dao.HashtagDao;
 public class TagOneListContoller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		HttpSession session = request.getSession();
+		String sessionMemberId = (String)session.getAttribute("sessionMemberId");
+		if(sessionMemberId == null) {
+			//로그인 되지 않은 상태라면
+			response.sendRedirect(request.getContextPath()+"/LoginController"); 
+			return;
+		
+		}
+			
 	
 		request.setCharacterEncoding("utf-8");	
 		String tag = request.getParameter("tag");

@@ -10,7 +10,7 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body class="container">
-	<div class="container p-3 my-3 bg-info text-white">
+	<div class="container p-3 my-3 bg-primary text-white">
 		<h1 align="center">tag rank</h1>
 	</div>
 	<a href="<%=request.getContextPath()%>/CashbookListByMonthController?" class="btn btn-secondary btn-sm" role="button">이전</a>
@@ -62,7 +62,7 @@
 					</tr>
 				</table>
 				</div>
-				<button type="submit" class="btn btn-outline-info btn-lg btn-block">검색</button>
+				<button type="submit" class="btn btn-outline-primary btn-lg btn-block">검색</button>
 			</form>
 			<br><br><br>
 			<h4 align="center">날짜별 검색</h4><br>
@@ -85,7 +85,7 @@
 					</tr>
 				</table>
 				</div>
-				<button type="submit" class="btn btn-outline-info btn-lg btn-block">검색</button>
+				<button type="submit" class="btn btn-outline-primary btn-lg btn-block">검색</button>
 			</form>
 		</div>
 

@@ -32,8 +32,8 @@
 			    	</fieldset>
 			      	</form>
                       <hr/>
-                    <center><h4>OR</h4></center>
-                    <input class="btn btn-lg btn-info btn-block" type="button" value="회원가입">
+                    <center><h4>OR</h4></center>                   
+                    <a href="<%=request.getContextPath()%>/InsertMemberController" class="btn btn-lg btn-info btn-block" role="button">회원가입</a>
 			    </div>
 			</div>
 		</div>

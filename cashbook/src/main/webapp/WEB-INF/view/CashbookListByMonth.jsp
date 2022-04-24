@@ -19,21 +19,21 @@
 		int totalTd = (Integer)request.getAttribute("totalTd");
 		
 		
-		System.out.println(list.size() + " ◀ list.size() cashbookListByMonth.jsp");
-		System.out.println(y + " ◀ y cashbookListByMonth.jsp");
-		System.out.println(m + " ◀ m cashbookListByMonth.jsp");
 		
-		System.out.println(startBlank + " ◀ startBlank cashbookListByMonth.jsp");
-		System.out.println(endDay + " ◀ endDay cashbookListByMonth.jsp");
-		System.out.println(endBlank + " ◀ endBlank cashbookListByMonth.jsp");
-		System.out.println(totalTd + " ◀ totalTd cashbookListByMonth.jsp");
+		System.out.println("[cashbookListByMonth.jsp] List size : " + list.size());
+		System.out.println("[cashbookListByMonth.jsp] 요청한 y : " + y);
+		System.out.println("[cashbookListByMonth.jsp] 요청한 m : " + m);
 		
-		
-	%>
+		System.out.println("[cashbookListByMonth.jsp] 요청한 startBlank : " + startBlank);
+		System.out.println("[cashbookListByMonth.jsp] 요청한 endDay : " + endDay);
+		System.out.println("[cashbookListByMonth.jsp] 요청한 endBlank : " + endBlank);
+		System.out.println("[cashbookListByMonth.jsp] 요청한 endBlank : " + totalTd);
 	
-	<div>
-		<%=session.getAttribute("sessionMemberId") %>님 반갑습니다.
-		<a href="<%=request.getContextPath()%>/LogoutController" class="btn btn-info btn-sm" role="button">로그아웃</a>
+	%>
+	<br>
+	<div style="text-align:right">
+		<%=session.getAttribute("sessionMemberId") %>님 반갑습니다. &nbsp;&nbsp;
+		<a href="<%=request.getContextPath()%>/LogoutController" class="btn btn-outline-warning btn-sm" role="button">로그아웃</a><br>
 	</div>
 
 	<div class="container p-3 my-3 bg-warning text-white">

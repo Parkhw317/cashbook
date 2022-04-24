@@ -47,8 +47,8 @@ public class CashbookListByMonthController extends HttpServlet {
 			
 		}
 		
-		System.out.println(y+" <-- y");
-		System.out.println(m+" <-- m");
+		System.out.println("[CashbookListByMonthController.doGet()]선택한 년도 : " + y);
+		System.out.println("[CashbookListByMonthController.doGet()]선택한 월 : " + m);
 		
 		
 		// 시작시 필요한 공백 <TD>의 갯수를 구하는 알고리즘 -> startBlank
@@ -75,10 +75,11 @@ public class CashbookListByMonthController extends HttpServlet {
 		// 4)
 		int totalTd = startBlank + endDay + endBlank;
 		
+
 		
 		// 2) 모델값(월별 가계부 리스트)을 반환하는 비지니스로직(모델) 호출
 		CashbookDao cashbookDao = new CashbookDao();
-		List<Map<String, Object>> list = cashbookDao.selectCashbookListByMonth(y, m);
+		List<Map<String, Object>> list = cashbookDao.selectCashbookListByMonth(y, m, sessionMemberId);
 		/*
 		 달력 출력에 필요한 모델 값(1), 2), 3), 4)) 데이터 베이스에서 받환된 모델 값(list, y출력년도, m출력월) + 오늘 날짜(today) 
 		 */

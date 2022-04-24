@@ -11,10 +11,10 @@
 <%
 	List<Map<String, Object>> dateTagList = (List<Map<String, Object>>)request.getAttribute("dateTagList");
 %>
-	<div class="container p-3 my-3 bg-dark text-light">
+	<div class="container p-3 my-3 bg-primary text-light">
 	<h1 align="center">날짜별 tag 리스트</h1>
 	</div>
-	<a href="<%=request.getContextPath()%>/TagController?" class="btn btn-dark btn-sm" role="button"">이전</a><br><br>
+	<a href="<%=request.getContextPath()%>/TagController?" class="btn btn-secondary btn-sm" role="button">이전</a><br><br>
 		<div style="text-align:center">
 		<table class="table">
 			<tr>

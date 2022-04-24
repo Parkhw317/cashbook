@@ -8,12 +8,12 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body class = "container">
-	<div class="container p-3 my-3 bg-secondary text-white">
+	<div class="container p-3 my-3 bg-success text-white">
 	<h1 align="center">Cashbook 상세보기</h1>
 	</div>
 	
 	<div align="right">
-		<a href="<%=request.getContextPath()%>/UpdateCashbookController?" class="btn btn btn-primary btn-sm" role="button">수정</a>
+		<a href="<%=request.getContextPath()%>/UpdateCashbookController?cashbookNo=<%=request.getAttribute("cashbookNo")%>" class="btn btn btn-primary btn-sm" role="button">수정</a>
 		<a href="<%=request.getContextPath()%>/DeleteCashbookController?cashbookNo=<%=request.getAttribute("cashbookNo")%>" class="btn btn btn-danger btn-sm" role="button">삭제</a>
 	</div>
 	<br>
