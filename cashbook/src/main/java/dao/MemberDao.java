@@ -11,11 +11,26 @@ import vo.Member;
 
 public class MemberDao {
 	// 회원수정
+	/* 쿼리
+	 UPDATE member SET member_pw=PASSWORD(?), member_name=?, member_address=?, 
+	member_gender=?, member_phone=?, member_email=?, update_date=NOW() 
+	WHERE member_id=? AND member_pw=PASSWORD(?)		
+	 */
+	
 	// 회원탈퇴
-	// 회원정보
+	/* 쿼리
+	 DELETE FROM member WHERE member_id=? AND member_pw=PASSWORD(?);
+	 */
+	
+	// 회원정보상세보기(select one)
+	/* 쿼리
+	 SELECT member_id memberId, member_name memberName, member_address memberAddress, 
+	member_gender memberGender, member_phone memberPhone, member_email memberEmail 
+	FROM member WHERE member_id=?;
+	 */
+	
 	
 	// 회원가입
-	
 	public void insertMember(Member member) {
 		
 		Connection conn = null;

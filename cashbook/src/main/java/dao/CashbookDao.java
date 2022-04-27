@@ -74,14 +74,6 @@ public class CashbookDao {
 		}
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
 	public int deleteCashbook(int cashbookNo, String memberId, String memberPw) {
 		int row = 0;
 
