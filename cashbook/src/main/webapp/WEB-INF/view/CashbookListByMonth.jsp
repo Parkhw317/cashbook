@@ -32,8 +32,9 @@
 	%>
 	<br>
 	<div style="text-align:right">
-		<%=session.getAttribute("sessionMemberId") %>님 반갑습니다. &nbsp;&nbsp;
-		<a href="<%=request.getContextPath()%>/LogoutController" class="btn btn-outline-warning btn-sm" role="button">로그아웃</a><br>
+		<a href="<%=request.getContextPath()%>/SelectMemberOneController?=<%=session.getAttribute("sessionMemberId")%>">
+		<%=session.getAttribute("sessionMemberId") %></a>님 반갑습니다. &nbsp;&nbsp;
+		<a href="<%=request.getContextPath()%>/LogoutController" class="btn btn-outline-warning btn-sm" role="button">로그아웃</a>
 	</div>
 
 	<div class="container p-3 my-3 bg-warning text-white">

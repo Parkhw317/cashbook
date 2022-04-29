@@ -54,14 +54,14 @@ public class DeleteCashbookController extends HttpServlet {
 		int cashbookNo = Integer.parseInt(request.getParameter("cashbookNo"));
 		String memberPw = request.getParameter("memberPw");
 		
-		System.out.println("[DeleteCashbookController.doGet()] cashbookNo : " + cashbookNo);
-		System.out.println("[DeleteCashbookController.doGet()] sessionMemberId : " + sessionMemberId);
-		System.out.println("[DeleteCashbookController.doGet()] memberPw : " + memberPw);
+		System.out.println("[DeleteCashbookController.doPost()] cashbookNo : " + cashbookNo);
+		System.out.println("[DeleteCashbookController.doPost()] sessionMemberId : " + sessionMemberId);
+		System.out.println("[DeleteCashbookController.doPost()] memberPw : " + memberPw);
 		
 		CashbookDao cashbookDao = new CashbookDao();
 		
 		int row = cashbookDao.deleteCashbook(cashbookNo, sessionMemberId, memberPw);
-		System.out.println("[DeleteCashbookController.doGet()] row : " + row);
+		System.out.println("[DeleteCashbookController.doPost()] row : " + row);
 		
 		response.sendRedirect(request.getContextPath()+"/CashbookListByMonthController");
 	
