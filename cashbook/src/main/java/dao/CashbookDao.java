@@ -21,7 +21,7 @@ public class CashbookDao {
 		
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
 			conn.setAutoCommit(false); 
 			
 			String Sql = "UPDATE cashbook SET cash_date=?, kind=?, cash=?, memo=?, update_date=NOW() "
@@ -85,7 +85,7 @@ public class CashbookDao {
 		
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
 			conn.setAutoCommit(false); 
 			
 			
@@ -152,7 +152,7 @@ public class CashbookDao {
 		
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
 			
 			String sql = "SELECT cashbook_no cashbookNo, member_id memberId, cash_date cashDate, kind, cash, memo FROM cashbook WHERE cashbook_no = ?";
 			stmt = conn.prepareStatement(sql);
@@ -194,7 +194,7 @@ public class CashbookDao {
 		ResultSet rs = null;
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
 			conn.setAutoCommit(false); // 자동커밋을 해제
 			
 			String sql = "INSERT INTO cashbook(cash_date,kind,cash,memo,member_id,update_date,create_date)"
@@ -274,7 +274,7 @@ public class CashbookDao {
 				+ "		 ORDER BY DAY(cash_date) ASC, kind ASC";
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, y);
 			stmt.setInt(2, m);

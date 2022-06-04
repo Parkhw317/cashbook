@@ -37,7 +37,7 @@ public class HashtagDao {
 				  ORDER BY c.cash_date ASC;
 			 */
 			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
 			
 			String sql = "SELECT"
 							+ " c.cash_date cashDate"
@@ -98,7 +98,7 @@ public class HashtagDao {
 				AND tag = '?';
 			 */
 			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
 			
 			String sql = "SELECT h.cashbook_no cashbookNo, cash_date cashDate, kind, cash, memo, tag"
 								+ " FROM cashbook c, hashtag h"
@@ -154,7 +154,7 @@ public class HashtagDao {
 				GROUP BY tag) t;
 			 */
 			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
 			String sql = "SELECT t.kind, t.tag, t.cnt, RANK() over(ORDER BY t.cnt DESC) 'rank'"
 					+ " FROM"
 					+ " (SELECT c.kind, h.tag, COUNT(*) cnt"
@@ -205,7 +205,7 @@ public class HashtagDao {
 		            GROUP BY tag) t
 					 */
 					Class.forName("org.mariadb.jdbc.Driver");
-					conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
+					conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
 					String sql = "SELECT t.tag, t.cnt, RANK() over(ORDER BY t.cnt DESC) ranking"
 							+ " FROM"
 							+ " (SELECT tag, COUNT(*) cnt"

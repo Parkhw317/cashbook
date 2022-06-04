@@ -23,10 +23,10 @@
 			    	<form accept-charset="UTF-8" role="form" action="<%=request.getContextPath()%>/LoginController" method="post">
                     <fieldset>
 			    	  	<div class="form-group">
-			    		    <input class="form-control" placeholder="아이디" name="memberId" type="text">
+			    		    <input class="form-control" placeholder="아이디" name="memberId" type="text" value="guest">
 			    		</div>
 			    		<div class="form-group">
-			    			<input class="form-control" placeholder="비밀번호" name="memberPw" type="password" value="">
+			    			<input class="form-control" placeholder="비밀번호" name="memberPw" type="password" value="1234">
 			    		</div>
 			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="로그인">
 			    	</fieldset>
